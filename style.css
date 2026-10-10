@@ -1,50 +1,79 @@
 /* =========================================================
-   1. DESIGN TOKENS
-   Colors and fonts live here as variables. Change a value
-   once and it updates everywhere it is used.
+   CHRISTOPHER ATTA AMPONSAH | PORTFOLIO STYLES
 
-   The palette comes from cmocean, a set of color maps made
-   for oceanography (Thyng et al., 2016). "deep" runs from
-   shallow water to the abyss; "topo" adds land colors.
+   Contents
+    1. Design tokens (colors, fonts, sizes)
+    2. Base
+    3. Header and navigation
+    4. Hero
+    5. Buttons, tags, status labels
+    6. Sections
+    7. About
+    8. Research: current work, studies, galleries, review cards
+    9. Publications and presentations
+   10. Projects
+   11. Experience timeline and awards
+   12. Contact and footer
+   13. Figure viewer (lightbox)
+   14. Tablets and phones
+   15. Reduced motion
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN TOKENS
+   Colors come from cmocean, color maps made for oceanography
+   (Thyng et al., 2016): "deep" runs from shallow water to the
+   abyss, and "topo" adds the land colors.
    ========================================================= */
 :root {
-  /* from cmocean "deep" (shallow to deep) */
-  --shallow: #fdfecc;      /* pale shoreline: headings on dark backgrounds */
-  --mint: #92d8a4;         /* light accents on dark backgrounds            */
-  --mint-pale: #caebb2;    /* body text on dark backgrounds                */
-  --teal: #52a8a3;         /* borders and the flood water                  */
-  --blue: #3e5a92;         /* links and buttons on light backgrounds       */
-  --indigo: #382d51;       /* header, contact, deep water                  */
-  --abyss: #281a2c;        /* footer, the deepest color                    */
+  /* water, shallow to deep */
+  --shallow: #fdfecc;
+  --mint: #92d8a4;
+  --pale: #caebb2;
+  --teal: #52a8a3;
+  --steel: #407598;
+  --navy: #3e5a92;
+  --indigo: #382d51;
+  --abyss: #281a2c;
 
-  /* from cmocean "topo" (land) */
-  --sand: #b3913f;         /* current-research edge                        */
-  --sand-dark: #7d5f1c;    /* readable sand-colored text                   */
-  --teal-dark: #2d6f6b;    /* readable teal-colored text                   */
+  /* land */
+  --sand: #b3913f;
+  --sand-dark: #7d5f1c;
+  --teal-dark: #2d6f6b;
 
   /* light surfaces and text */
-  --paper: #f4f8f6;        /* page background                              */
-  --wash: #e5f3ea;         /* tinted Research section                      */
+  --paper: #f6f8f5;
+  --wash: #e8f1eb;
   --white: #ffffff;
-  --ink: #2b2542;          /* main text                                    */
-  --muted: #5a5670;        /* secondary text                               */
-  --line: #d6e3dc;         /* thin borders                                 */
+  --ink: #231d36;
+  --muted: #57536b;
+  --line: #d7e0da;
+  --line-strong: #b7c7bd;
 
-  --font-heading: "Source Serif 4", Georgia, serif;
+  /* type */
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
   --font-body: "Public Sans", system-ui, "Segoe UI", Roboto, sans-serif;
 
-  --width: 56rem;          /* maximum width of the content */
+  /* layout */
+  --wide: 74rem;           /* page width                  */
+  --measure: 64ch;         /* comfortable line length     */
+  --header-h: 4rem;        /* used for scroll offsets     */
 }
+
 
 /* =========================================================
    2. BASE
    ========================================================= */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);   /* headings land below the sticky header */
 }
 
 body {
@@ -54,20 +83,28 @@ body {
   line-height: 1.65;
   color: var(--ink);
   background: var(--paper);
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-heading);
-  line-height: 1.2;
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
   margin: 0;
+  text-wrap: balance;      /* evens out line lengths in headings */
 }
 
 p {
   margin: 0 0 1rem;
 }
 
+img {
+  max-width: 100%;
+}
+
 a {
-  color: var(--blue);
+  color: var(--navy);
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
@@ -75,40 +112,42 @@ a:hover {
   color: var(--ink);
 }
 
-/* A clear outline when someone tabs through with the keyboard */
-a:focus-visible {
-  outline: 2px solid var(--blue);
+/* Visible outline for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--navy);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* On dark backgrounds the outline switches to the pale color */
-.site-header a:focus-visible,
-.hero a:focus-visible,
-.section-deep a:focus-visible {
+.site-header :focus-visible,
+.hero :focus-visible,
+.section-deep :focus-visible,
+.site-footer :focus-visible,
+.lightbox :focus-visible {
   outline-color: var(--shallow);
 }
 
-/* .wrap keeps content centered with a comfortable width */
 .wrap {
-  max-width: var(--width);
+  width: 100%;
+  max-width: var(--wide);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 .skip-link {
   position: absolute;
   left: -999px;
-  top: 0.5rem;
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
   background: var(--shallow);
   color: var(--abyss);
-  padding: 0.5rem 1rem;
-  z-index: 100;
 }
 
 .skip-link:focus {
-  left: 0.5rem;
+  left: 0.75rem;
 }
+
 
 /* =========================================================
    3. HEADER AND NAVIGATION
@@ -116,162 +155,196 @@ a:focus-visible {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(56, 45, 81, 0.95);   /* --indigo, slightly see-through */
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(146, 216, 164, 0.25);
+  z-index: 20;
+  background: rgba(40, 26, 44, 0.92);    /* --abyss, slightly see-through */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(146, 216, 164, 0.18);
 }
 
 .header-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem 1.5rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  min-height: var(--header-h);
 }
 
-.site-name {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.1rem;
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--shallow);
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.site-name:hover {
+.brand:hover {
   color: var(--mint);
 }
 
-nav {
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 1.1rem;
+  gap: 0.25rem 1.6rem;
 }
 
-nav a {
-  color: var(--mint-pale);
-  text-decoration: none;
+.site-nav a {
+  display: inline-block;
+  padding: 0.35rem 0;
+  color: var(--pale);
   font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
 }
 
-nav a:hover {
+.site-nav a:hover {
   color: var(--shallow);
-  text-decoration: underline;
 }
+
+/* script.js marks the link for the section you are reading */
+.site-nav a[aria-current="true"] {
+  color: var(--shallow);
+  border-bottom-color: var(--mint);
+}
+
+/* The menu button only appears on phones (see section 14) */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(202, 235, 178, 0.45);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--shallow);
+  font: 500 0.95rem var(--font-body);
+  cursor: pointer;
+}
+
+/* three-line icon drawn with one span and two shadows */
+.nav-toggle-icon,
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle-icon {
+  position: relative;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-icon::before { top: -6px; }
+.nav-toggle-icon::after  { top: 6px; }
+
+/* turns into an X while the menu is open */
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon::after  { transform: translateY(-6px) rotate(-45deg); }
+
 
 /* =========================================================
    4. HERO
-   A deep-water gradient with contour lines drawn by CSS only.
-   A band of water rises over the lowest lines on page load.
    ========================================================= */
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 6.5rem 0 10rem;
-  color: var(--mint-pale);
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(4rem, 8vw, 7rem);
+  color: var(--pale);
   background:
-    radial-gradient(ellipse 70% 60% at 85% 25%, rgba(82, 168, 163, 0.28), transparent 70%),
-    linear-gradient(170deg, var(--indigo) 0%, var(--blue) 70%, #407598 100%);
+    radial-gradient(ellipse 60% 70% at 78% 45%, rgba(82, 168, 163, 0.30), transparent 70%),
+    linear-gradient(165deg, var(--abyss) 0%, var(--indigo) 45%, var(--navy) 100%);
 }
 
-/* Contour lines */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    repeating-radial-gradient(
-      ellipse 55% 70% at 88% 28%,
-      transparent 0 26px,
-      rgba(146, 216, 164, 0.22) 26px 27.5px
-    );
-  /* fade the lines out on the left so the text stays easy to read */
-  -webkit-mask-image: linear-gradient(to right, transparent 20%, #000 80%);
-  mask-image: linear-gradient(to right, transparent 20%, #000 80%);
-}
-
-/* Flood water */
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 6rem;
-  background: linear-gradient(to top, rgba(82, 168, 163, 0.65), rgba(82, 168, 163, 0.25));
-  border-top: 2px solid var(--mint);
-  animation: water-rise 2.2s ease-out both;
-}
-
-@keyframes water-rise {
-  from { height: 0; }
-  to   { height: 6rem; }
-}
-
-/* Text on the left, photo on the right: a two-column grid.
-   "1fr" takes the leftover space; "auto" is as wide as the photo. */
-.hero-content {
-  position: relative;   /* sits above the contour and water layers */
-  z-index: 1;
+.hero-grid {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   align-items: center;
-  gap: 3rem;
+  gap: clamp(2.5rem, 6vw, 5rem);
 }
 
+.hero-portrait {
+  justify-self: center;
+}
+
+/* Large round photo. object-fit: cover fills the circle without
+   stretching; the outline draws a thin second ring around it. */
 .hero-photo {
-  width: 15rem;
-  height: 15rem;
-  border-radius: 50%;          /* turns the square photo into a circle  */
-  object-fit: cover;           /* fills the circle without stretching   */
-  border: 4px solid var(--mint);
+  display: block;
+  width: min(100%, 22rem);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--mint);
+  outline: 1px solid rgba(146, 216, 164, 0.4);
+  outline-offset: 12px;
   background: var(--indigo);
+  box-shadow: 0 2rem 4rem -1.5rem rgba(20, 10, 30, 0.6);
 }
 
 .hero h1 {
-  color: var(--shallow);
-  font-size: clamp(2.4rem, 6vw, 3.9rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  max-width: 14ch;
+  max-width: 12ch;
   margin-bottom: 1.25rem;
+  color: var(--shallow);
+  font-size: clamp(2.7rem, 5.6vw, 4.6rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
 }
 
 .hero-role {
-  font-size: 1rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.6rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 .hero-statement {
-  color: var(--white);
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
-  line-height: 1.45;
-  max-width: 34ch;
+  max-width: 40ch;
   margin-bottom: 2.25rem;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.42rem);
+  line-height: 1.5;
 }
 
-.hero-links {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
 /* =========================================================
-   5. BUTTONS
+   5. BUTTONS, TAGS, STATUS LABELS
    ========================================================= */
 .button {
-  display: inline-block;
-  padding: 0.65rem 1.25rem;
-  border: 2px solid var(--blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.3rem;
+  border: 1.5px solid var(--navy);
   border-radius: 4px;
-  background: var(--blue);
+  background: var(--navy);
   color: var(--white);
-  font-weight: 600;
   font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
   text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .button:hover {
@@ -280,429 +353,943 @@ nav a:hover {
   color: var(--white);
 }
 
-.button-quiet {
-  background: transparent;
-  color: var(--blue);
-}
-
-.button-quiet:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: var(--white);
-}
-
-/* Buttons inside the dark hero use the light colors instead */
-.hero .button {
+/* light buttons for dark backgrounds */
+.button-light {
   background: var(--mint);
   border-color: var(--mint);
   color: var(--abyss);
 }
 
-.hero .button:hover {
+.button-light:hover {
   background: var(--shallow);
   border-color: var(--shallow);
+  color: var(--abyss);
 }
 
-.hero .button-quiet {
+.button-ghost {
   background: transparent;
-  border-color: var(--mint-pale);
+  border-color: rgba(202, 235, 178, 0.6);
   color: var(--shallow);
 }
 
-.hero .button-quiet:hover {
-  background: rgba(253, 254, 204, 0.12);
+.button-ghost:hover {
+  background: rgba(253, 254, 204, 0.1);
+  border-color: var(--shallow);
   color: var(--shallow);
 }
+
+/* Method tags: a wrapping row of small labels */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;            /* a very large radius makes a pill */
+  background: var(--wash);
+  color: var(--indigo);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* Status labels: a colored dot plus text */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.status::before {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-current   { color: var(--mint); }
+.status-published { color: var(--teal-dark); }
+.status-review    { color: var(--sand-dark); }
+
+/* "under review" uses a hollow dot: not final yet */
+.status-review::before {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
 
 /* =========================================================
    6. SECTIONS
    ========================================================= */
 .section {
-  padding: 4.5rem 0;
-  scroll-margin-top: 4rem;   /* so the sticky header doesn't cover headings */
+  padding: clamp(4rem, 9vw, 7rem) 0;
 }
 
-.section-tinted {
+.section-wash {
   background: var(--wash);
 }
 
 .section h2 {
-  font-size: 2rem;
   color: var(--indigo);
-  margin-bottom: 2rem;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+.section-head {
+  max-width: 48rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section-intro {
+  margin: 1rem 0 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.5;
 }
 
 .list-heading {
-  font-size: 1.35rem;
+  margin: 0 0 1rem;
   color: var(--indigo);
-  margin: 3.5rem 0 1.25rem;
+  font-size: 1.35rem;
 }
 
-/* About: text on the left, tools on the right */
+.subhead {
+  margin: clamp(3rem, 6vw, 4.5rem) 0 1.25rem;
+  color: var(--indigo);
+  font-size: 1.6rem;
+}
+
+
+/* =========================================================
+   7. ABOUT
+   ========================================================= */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: start;
 }
 
-.about-text p {
-  max-width: 62ch;
-}
-
-.tools {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--teal);
-  border-radius: 6px;
-  padding: 1.5rem;
-}
-
-.tools h3 {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-}
-
-.tools dl {
-  margin: 0;
-}
-
-.tools dt {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-top: 0.85rem;
-}
-
-.tools dt:first-child {
-  margin-top: 0;
-}
-
-.tools dd {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* =========================================================
-   7. RESEARCH FEATURES
-   ========================================================= */
-.section-intro {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  max-width: 48ch;
-  margin-bottom: 2.5rem;
-}
-
-.feature {
-  background: var(--white);
-  border-left: 4px solid var(--teal);
-  border-radius: 0 6px 6px 0;
-  padding: 2rem 2rem 1.25rem;
+.about-text h2 {
   margin-bottom: 1.5rem;
 }
 
-.feature-question {
-  font-size: 1.45rem;
-  font-weight: 600;
+.about-text p {
+  max-width: var(--measure);
+}
+
+.lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.9vw, 1.4rem);
+  line-height: 1.5;
+}
+
+.about-side {
+  padding: 1.75rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.about-side h3 {
+  margin-bottom: 0.85rem;
   color: var(--indigo);
-  max-width: 32ch;
-  margin-bottom: 1rem;
+  font-size: 1.15rem;
 }
 
-.feature p {
-  max-width: 66ch;
-}
-
-/* Each card's left edge and label show its status:
-   indigo = current research, teal = published, sand = under review */
-.feature-current {
-  border-left-color: var(--indigo);
-}
-
-.feature-published {
-  border-left-color: var(--teal);
-}
-
-.feature-review {
-  border-left-color: var(--sand);
-}
-
-.feature-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 0.35rem;
-}
-
-.feature-current .feature-label {
-  color: var(--indigo);
-}
-
-.feature-published .feature-label {
-  color: var(--teal-dark);
-}
-
-.feature-review .feature-label {
-  color: var(--sand-dark);
-}
-
-.review-note {
-  color: var(--muted);
-  font-style: italic;
-}
-
-/* Skill tags: a wrapping row of small rounded labels */
-.skills {
-  list-style: none;
+.now-list {
+  margin: 0 0 1.75rem;
   padding: 0;
-  margin: 0.25rem 0 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  list-style: none;
 }
 
-.skills li {
-  background: var(--wash);
-  color: var(--indigo);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 0.2rem 0.7rem;
-  border-radius: 999px;   /* a very large radius makes a pill shape */
+.now-list li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-/* Figures in a grid with two equal columns.
-   Two images fill one row; four images fill two rows. */
-.figure-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem 1.25rem;
-  margin: 1.75rem 0 0.75rem;
+.now-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--teal);
 }
 
-.figure-grid figure {
+.toolkit {
   margin: 0;
 }
 
-.figure-grid img {
-  display: block;
-  width: 100%;          /* shrink to fit the column            */
-  height: auto;
-  aspect-ratio: 4 / 3;  /* give every image the same box shape */
-  object-fit: contain;  /* fit the whole image inside that box */
-  padding: 0.4rem;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--white);
+.toolkit div {
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--line);
 }
 
-.figure-grid a:hover img {
-  border-color: var(--teal);
-}
-
-.figure-grid figcaption {
-  font-size: 0.9rem;
+.toolkit dt {
   color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.toolkit dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   8. RESEARCH
+   ========================================================= */
+
+/* Current PhD research: a dark panel, because it is the "now" */
+.now-panel {
+  max-width: 52rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 8px;
+  background: var(--indigo);
+  color: var(--pale);
+}
+
+.now-panel h3 {
+  margin-bottom: 0.75rem;
+  color: var(--shallow);
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+}
+
+.now-panel p {
+  max-width: var(--measure);
+}
+
+.now-panel .tags li {
+  background: rgba(146, 216, 164, 0.16);
+  color: var(--shallow);
+}
+
+/* A published study */
+.study {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.4rem, 3.5vw, 2.75rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.study-title {
+  max-width: 32ch;
+  margin-bottom: 1.75rem;
+  color: var(--indigo);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+}
+
+/* Text on the left, paper details on the right */
+.study-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+}
+
+.study-text p {
+  max-width: var(--measure);
+}
+
+.study-text h4 {
+  margin: 1.5rem 0 0.75rem;
+  color: var(--indigo);
+  font-size: 1.15rem;
+}
+
+.findings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.findings li {
+  position: relative;
+  max-width: var(--measure);
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.findings li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 1px;
+  background: var(--teal);
+}
+
+.findings strong {
+  color: var(--indigo);
+}
+
+/* The details column reads like the margin notes on a map sheet */
+.study-meta {
+  padding-left: clamp(1.25rem, 3vw, 2rem);
+  border-left: 1px solid var(--line);
+}
+
+.study-meta dl {
+  margin: 0 0 1.5rem;
+}
+
+.study-meta dl div + div {
+  margin-top: 1rem;
+}
+
+.study-meta dt {
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.study-meta dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Gallery: one wide lead figure, then three in a row */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+.gallery figure {
+  margin: 0;
+}
+
+.gallery-lead {
+  grid-column: 1 / -1;             /* spans all three columns */
+}
+
+.gallery a {
+  display: block;
+  padding: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  cursor: zoom-in;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gallery a:hover {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(82, 168, 163, 0.18);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* the three small figures share one box shape so captions line up */
+.gallery figure:not(.gallery-lead) img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.gallery figcaption {
   margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.gallery-lead figcaption {
+  max-width: var(--measure);
 }
 
 .figure-credit {
-  font-size: 0.8rem;
+  margin: 1.5rem 0 0;
   color: var(--muted);
-  margin-bottom: 1.5rem;
-}
-
-.status {
-  display: inline-block;
   font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.1rem 0.5rem;
-  border-radius: 3px;
-  white-space: nowrap;
 }
 
-.status-review {
-  color: var(--sand-dark);
-  background: #f4ead2;
+/* Studies in review: dashed borders, the map symbol for "proposed" */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
-/* Publications */
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background: var(--white);
+  border: 1.5px dashed var(--sand);
+  border-radius: 8px;
+}
+
+.review-card h4 {
+  margin-bottom: 0.85rem;
+  color: var(--indigo);
+  font-size: 1.35rem;
+}
+
+.review-card .tags {
+  margin-top: auto;               /* keeps the tags at the bottom of both cards */
+  padding-top: 0.5rem;
+}
+
+.review-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   9. PUBLICATIONS AND PRESENTATIONS
+   ========================================================= */
+.pub-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
 .pub-list {
-  list-style: none;
-  margin: 0;
+  margin: 0 0 2.5rem;
   padding: 0;
+  list-style: none;
 }
 
 .pub-list li {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: 1rem;
   padding: 1.1rem 0;
-  border-top: 1px solid #c3dccd;
+  border-top: 1px solid var(--line);
+}
+
+.pub-year {
+  padding-top: 0.15rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-year .status {
+  margin: 0;
+  font-size: 0.8rem;
 }
 
 .pub-title {
   display: block;
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.35;
   margin-bottom: 0.35rem;
+  color: var(--indigo);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-span.pub-title {
-  color: var(--ink);
+a.pub-title {
+  text-decoration: none;
+}
+
+a.pub-title:hover {
+  color: var(--navy);
+  text-decoration: underline;
 }
 
 .pub-meta {
-  font-size: 0.95rem;
-  color: var(--muted);
   margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
-/* =========================================================
-   8. DATED LISTS (presentations, education, experience, awards)
-   A two-column grid: date on the left, details on the right.
-   ========================================================= */
-.entry-list {
-  list-style: none;
+.pub-meta strong {
+  color: var(--ink);
+}
+
+.talk-list {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.entry-list li {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1.5rem;
-  padding: 1rem 0;
+.talk-list li {
+  padding: 1.1rem 0;
   border-top: 1px solid var(--line);
 }
 
-.section-tinted .entry-list li {
-  border-top-color: #c3dccd;
+.talk-date {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-.entry-date {
+.talk-title {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.talk-meta {
+  margin: 0;
   color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.award-note {
+  color: var(--teal-dark);
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   10. PROJECTS
+   ========================================================= */
+.projects-empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background: var(--white);
+  border: 1.5px dashed var(--line-strong);
+  border-radius: 8px;
+}
+
+.projects-empty h2 {
+  margin-bottom: 0.75rem;
+}
+
+.projects-empty p {
+  max-width: 52ch;
+  margin: 0;
+}
+
+
+/* =========================================================
+   11. EXPERIENCE TIMELINE AND AWARDS
+   ========================================================= */
+.cv-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.cv-grid > div > .list-heading + * {
+  margin-top: 1.25rem;
+}
+
+/* A vertical line with a dot for each entry.
+   Filled dots (.is-current) mark roles you hold now. */
+.timeline {
+  position: relative;
+  margin: 0 0 2.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--line-strong);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 1.75rem 2rem;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--teal);
+}
+
+.timeline li.is-current::before {
+  background: var(--teal);
+}
+
+.tl-date {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-title {
+  margin: 0.15rem 0 0.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.tl-org {
+  margin: 0;
+  color: var(--indigo);
   font-size: 0.95rem;
+}
+
+.tl-desc {
+  max-width: var(--measure);
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.timeline-compact li {
+  padding-bottom: 1.25rem;
+}
+
+.award-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.award-list li {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.award-year {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   padding-top: 0.1rem;
 }
 
-.entry-title {
-  font-weight: 600;
-  margin-bottom: 0.2rem;
-}
-
-.entry-meta {
-  color: var(--muted);
-  font-size: 0.95rem;
+.award-title {
   margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
-/* Projects placeholder */
-.empty-note {
-  border: 1px dashed var(--teal);
-  border-radius: 6px;
-  padding: 2rem;
-  background: var(--white);
+.award-org {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
 }
+
 
 /* =========================================================
-   9. CONTACT (dark) AND FOOTER (darkest)
+   12. CONTACT AND FOOTER
    The page ends in deep water, matching the top.
    ========================================================= */
 .section-deep {
-  background: var(--indigo);
-  color: var(--mint-pale);
+  background:
+    radial-gradient(ellipse 50% 80% at 90% 10%, rgba(82, 168, 163, 0.22), transparent 70%),
+    var(--indigo);
+  color: var(--pale);
 }
 
 .section-deep h2 {
   color: var(--shallow);
 }
 
-.section-deep a {
-  color: var(--mint);
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 2.5rem 4rem;
 }
 
-.section-deep a:hover {
+.contact-lead {
+  max-width: 34ch;
+  margin: 1rem 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.4;
+}
+
+.contact-email {
+  color: var(--mint);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.contact-email:hover {
   color: var(--shallow);
 }
 
-.contact-intro {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
+.contact-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
+.contact-links li {
+  border-top: 1px solid rgba(202, 235, 178, 0.22);
+}
+
+.contact-links li:last-child {
+  border-bottom: 1px solid rgba(202, 235, 178, 0.22);
+}
+
+.contact-links a {
+  display: block;
+  padding: 0.85rem 0;
+  color: var(--shallow);
   font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  color: var(--mint);
+  text-decoration: underline;
 }
 
 .site-footer {
-  padding: 2rem 0;
+  padding: 1.75rem 0;
   background: var(--abyss);
-  color: var(--mint-pale);
-  font-size: 0.9rem;
+  color: var(--pale);
+  font-size: 0.88rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
 }
 
 .site-footer p {
   margin: 0;
 }
 
+.site-footer a {
+  color: var(--mint);
+}
+
+
 /* =========================================================
-   10. SMALL SCREENS
-   Rules inside this block only apply when the screen is
-   narrower than 700px (phones and small tablets).
+   13. FIGURE VIEWER (LIGHTBOX)
+   Uses the built-in <dialog> element. script.js opens it.
    ========================================================= */
-@media (max-width: 700px) {
-  .hero {
-    padding: 4rem 0 8rem;
+.lightbox {
+  width: min(94vw, 76rem);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--pale);
+}
+
+.lightbox::backdrop {
+  background: rgba(24, 14, 30, 0.9);
+}
+
+.lightbox-bar,
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lightbox-bar {
+  margin-bottom: 0.75rem;
+}
+
+.lightbox-count {
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox button {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(202, 235, 178, 0.5);
+  border-radius: 4px;
+  background: rgba(40, 26, 44, 0.6);
+  color: var(--shallow);
+  font: 600 0.9rem var(--font-body);
+  cursor: pointer;
+}
+
+.lightbox button:hover {
+  background: rgba(253, 254, 204, 0.12);
+}
+
+.lightbox-figure {
+  margin: 0;
+}
+
+.lightbox-figure img {
+  display: block;
+  max-width: 100%;
+  max-height: 74vh;
+  margin: 0 auto;
+  padding: 0.5rem;
+  background: var(--white);
+  border-radius: 4px;
+}
+
+.lightbox-figure figcaption {
+  max-width: 60rem;
+  margin: 0.85rem auto 0;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.lightbox-nav {
+  margin-top: 0.85rem;
+}
+
+
+/* =========================================================
+   14. TABLETS AND PHONES
+   ========================================================= */
+
+/* Tablets and small laptops: stack the two-column layouts */
+@media (max-width: 960px) {
+  .hero-grid,
+  .about-grid,
+  .study-body,
+  .pub-columns,
+  .cv-grid,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .hero::after {
-    height: 4.5rem;
-    animation: none;
-  }
-
-  /* On phones: one column, small photo above the name */
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .hero-portrait {
+    order: -1;                    /* photo above the text */
+    justify-self: start;
   }
 
   .hero-photo {
-    order: -1;                 /* move the photo before the text */
-    width: 8rem;
-    height: 8rem;
+    width: 11rem;
+    outline-offset: 8px;
   }
 
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .study-meta {
+    padding: 1.5rem 0 0;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* Phones: fold the menu behind a button, single-column figures */
+@media (max-width: 760px) {
+  .js .nav-toggle {
+    display: inline-flex;
   }
 
-  .feature {
-    padding: 1.5rem 1.25rem 1rem;
+  .js .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0.5rem clamp(1rem, 4vw, 2rem) 1.25rem;
+    background: var(--abyss);
+    border-bottom: 1px solid rgba(146, 216, 164, 0.18);
   }
 
-  .figure-grid {
-    grid-template-columns: 1fr;   /* stack the figures in one column */
+  .js .site-nav.is-open {
+    display: block;
   }
 
-  .entry-list li {
-    grid-template-columns: 1fr;
+  .js .site-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .js .site-nav a {
+    display: block;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(202, 235, 178, 0.14);
+    font-size: 1.05rem;
+  }
+
+  .js .site-nav a[aria-current="true"] {
+    border-bottom-color: rgba(202, 235, 178, 0.14);
+    color: var(--mint);
+  }
+
+  .hero-photo {
+    width: 8.5rem;
+    border-width: 4px;
+    outline-offset: 6px;
+  }
+
+  .gallery,
+  .review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pub-list li,
+  .award-list li {
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.25rem;
   }
 }
 
-/* Respect people who turn off animations in their system settings */
+
+/* =========================================================
+   15. REDUCED MOTION
+   Respects people who turn off animations in their settings.
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .hero::after {
-    animation: none;
+  .button,
+  .gallery a,
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    transition: none;
   }
 }

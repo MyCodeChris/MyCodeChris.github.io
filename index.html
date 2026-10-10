@@ -3,139 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christopher Atta Amponsah | GIS and Flood Modeling</title>
-  <meta name="description" content="Christopher Atta Amponsah, GISP: PhD student at the University of South Florida working on GIS, machine learning, and hydraulic modeling for flood prediction.">
+  <title>Christopher Atta Amponsah | GIS, Machine Learning and Flood Modeling</title>
+  <meta name="description" content="Christopher Atta Amponsah, GISP, is a PhD student at the University of South Florida who builds machine learning and hydraulic models for flood prediction, land cover mapping, and water quality.">
 
-  <!-- Fonts from Google Fonts: a serif for headings, a sans-serif for reading text -->
+  <!-- How the page looks when the link is shared (LinkedIn, Slack, email) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mycodechris.github.io/">
+  <meta property="og:title" content="Christopher Atta Amponsah | GIS and Flood Modeling">
+  <meta property="og:description" content="Machine learning and hydraulic models for flood prediction, land cover mapping, and water quality.">
+  <meta property="og:image" content="https://mycodechris.github.io/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts: Newsreader for headings, Public Sans for reading text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Marks the page as "JavaScript is on" so the mobile menu can collapse.
+       Without JavaScript the menu simply stays open, so nothing breaks. -->
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="script.js" defer></script>
+
+  <!-- Structured data: helps search engines show your name, role, and profiles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Christopher Atta Amponsah",
+    "jobTitle": "GIS and Geospatial AI Analyst, PhD student",
+    "url": "https://mycodechris.github.io/",
+    "image": "https://mycodechris.github.io/images/profile.jpg",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "University of South Florida" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "University of South Florida" },
+      { "@type": "CollegeOrUniversity", "name": "Kwame Nkrumah University of Science and Technology" }
+    ],
+    "knowsAbout": ["GIS", "Flood modeling", "Machine learning", "Remote sensing", "Hydraulic modeling", "Water quality"],
+    "sameAs": [
+      "https://orcid.org/0009-0009-2702-3150",
+      "https://github.com/MyCodeChris",
+      "https://www.linkedin.com/in/christopher-atta-amponsah-pgs-ggs-13408519"
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- Lets keyboard users jump past the menu -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ================= HEADER ================= -->
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
   <header class="site-header">
     <div class="wrap header-inner">
-      <a href="#top" class="site-name">C. Atta Amponsah</a>
-      <nav aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#awards">Awards</a>
-        <a href="#contact">Contact</a>
+      <a class="brand" href="#top">C. Atta Amponsah</a>
+
+      <!-- Shown only on phones (when JavaScript is on) -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        Menu
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- ================= HERO ================= -->
+    <!-- =====================================================
+         HERO
+         Left: who you are. Right: your photo.
+         ===================================================== -->
     <section id="top" class="hero">
-      <div class="wrap hero-content">
+      <div class="wrap hero-grid">
         <div class="hero-text">
           <h1>Christopher Atta Amponsah</h1>
           <p class="hero-role">GIS &amp; Geospatial AI Analyst, GISP<br>
             PhD student, Geography, Environmental Science &amp; Policy, University of South Florida</p>
           <p class="hero-statement">I build machine learning and hydraulic models that map where floods will reach, and I test whether those maps still hold when the next storm is different from the last. My PhD research carries this into water quality in Florida's coastal watersheds.</p>
-          <div class="hero-links">
-            <a class="button" href="#research">See my research</a>
-            <a class="button button-quiet" href="mailto:attaamponsahc@usf.edu">Email me</a>
+          <div class="hero-actions">
+            <a class="button button-light" href="#research">See my research</a>
+            <a class="button button-ghost" href="files/Christopher-Atta-Amponsah-CV.pdf">Download CV</a>
           </div>
         </div>
 
-        <!-- Your photo: save it as images/profile.jpg -->
-        <img class="hero-photo" src="images/profile.jpg" width="600" height="600"
-             alt="Portrait of Christopher Atta Amponsah">
+        <div class="hero-portrait">
+          <img class="hero-photo" src="images/profile.jpg" width="600" height="600"
+               alt="Portrait of Christopher Atta Amponsah">
+        </div>
       </div>
     </section>
 
-    <!-- ================= ABOUT ================= -->
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
     <section id="about" class="section">
-      <div class="wrap">
-        <h2>About</h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>I am a PhD student in Dr. Barnali Dixon's Geospatial Analytics Lab at the University of South Florida. My work combines GIS, machine learning, and physics-based hydraulic modeling (HEC-RAS) to predict flooding, and it is expanding toward water-quality risk across Florida watersheds.</p>
-            <p>My path started in the field. I trained as a Geomatic Engineer at Kwame Nkrumah University of Science and Technology in Ghana and spent years on cadastral and engineering surveys with GNSS receivers, total stations, and drones. That background shapes how I model: I care about where the data comes from, how it is labeled, and whether a predicted map agrees with what is on the ground.</p>
-            <p>I hold an MA in Geography (GIS and Spatial Analysis) from USF and am a certified GIS Professional (GISP).</p>
-          </div>
+      <div class="wrap about-grid">
+        <div class="about-text">
+          <h2>About</h2>
+          <p class="lead">I am a PhD student in Dr. Barnali Dixon's Geospatial Analytics Lab at the University of South Florida. My work combines GIS, machine learning, and physics-based hydraulic modeling (HEC-RAS) to predict flooding, and it is expanding toward water-quality risk across Florida watersheds.</p>
+          <p>My path started in the field. I trained as a Geomatic Engineer at Kwame Nkrumah University of Science and Technology in Ghana and spent years on cadastral and engineering surveys with GNSS receivers, total stations, and drones. That background shapes how I model: I care about where the data comes from, how it is labeled, and whether a predicted map agrees with what is on the ground.</p>
+          <p>I hold an MA in Geography (GIS and Spatial Analysis) from USF and am a certified GIS Professional (GISP).</p>
+        </div>
 
-          <aside class="tools" aria-label="Tools">
-            <h3>Tools I work with</h3>
-            <dl>
+        <aside class="about-side" aria-label="Current roles and tools">
+          <h3>Currently</h3>
+          <ul class="now-list">
+            <li>PhD researcher, Geospatial Analytics Lab, USF</li>
+            <li>Instructor of record, GEO 3164C: Research Methods in Geography</li>
+            <li>GIS Professional (GISP), GIS Certification Institute</li>
+          </ul>
+
+          <h3>Toolkit</h3>
+          <dl class="toolkit">
+            <div>
               <dt>Programming</dt>
               <dd>Python, R, JavaScript</dd>
+            </div>
+            <div>
               <dt>Machine learning</dt>
               <dd>TensorFlow, Keras, scikit-learn, XGBoost, AutoML (FLAML, AutoKeras)</dd>
+            </div>
+            <div>
               <dt>GIS and remote sensing</dt>
               <dd>ArcGIS Pro, QGIS, Google Earth Engine</dd>
+            </div>
+            <div>
               <dt>Hydraulic and hydrologic</dt>
               <dd>HEC-RAS, SWMM</dd>
+            </div>
+            <div>
               <dt>Surveying</dt>
               <dd>GNSS/GPS, total station, UAV, leveling</dd>
-            </dl>
-          </aside>
-        </div>
+            </div>
+          </dl>
+        </aside>
       </div>
     </section>
 
-    <!-- ================= RESEARCH ================= -->
-    <section id="research" class="section section-tinted">
+    <!-- =====================================================
+         RESEARCH
+         ===================================================== -->
+    <section id="research" class="section section-wash">
       <div class="wrap">
-        <h2>Research</h2>
+        <header class="section-head">
+          <h2>Research</h2>
+          <p class="section-intro">I apply machine learning and AI to environmental hazards (flooding, land change, and water quality) and test those predictions against physical models and field data.</p>
+        </header>
 
-        <p class="section-intro">I apply machine learning and AI to environmental hazards (flooding, land change, and water quality) and test those predictions against physical models and field data.</p>
-
-        <!-- ===== Current PhD research ===== -->
-        <article class="feature feature-current">
-          <p class="feature-label">Current PhD research</p>
-          <h3 class="feature-question">Water quality in a flood-prone landscape</h3>
+        <!-- ----- Current PhD research ----- -->
+        <article class="now-panel">
+          <p class="status status-current">Current PhD research</p>
+          <h3>Water quality in a flood-prone landscape</h3>
           <p>My doctoral research, advised by Dr. Barnali Dixon, looks at how microbial contaminants move from land to water in Florida's coastal watersheds, and how flooding and rising groundwater shape that risk. It combines GIS, machine learning, and physics-informed modeling. More details to follow.</p>
-          <ul class="skills" aria-label="Methods">
+          <ul class="tags" aria-label="Methods">
             <li>GIS</li>
             <li>Machine learning</li>
             <li>Physics-informed modeling</li>
           </ul>
         </article>
 
-        <!-- ===== Published: Journal of Hydrology review ===== -->
-        <article class="feature feature-published">
-          <p class="feature-label">Published in the Journal of Hydrology, 2026</p>
-          <h3 class="feature-question">Where is machine learning flood research happening, and where is it missing?</h3>
-          <p>A systematic review of 100 peer-reviewed machine learning flood prediction studies published between 1990 and 2024, compared against 2,395 flood events in the EM-DAT disaster database. Pluvial floods are now the most common target (44% of studies), ahead of fluvial (40%), compound (9%), and coastal (7%) flooding.</p>
+        <!-- ----- Published study 1: Journal of Hydrology review ----- -->
+        <article class="study">
+          <header class="study-head">
+            <p class="status status-published">Published in the Journal of Hydrology, 2026</p>
+            <h3 class="study-title">Where is machine learning flood research happening, and where is it missing?</h3>
+          </header>
 
-          <!-- Four figures in a 2 x 2 grid. Each image links to its full-size file. -->
-          <div class="figure-grid">
-            <figure>
-              <a href="images/review-flood-vs-studies.jpg" target="_blank" rel="noopener">
+          <div class="study-body">
+            <div class="study-text">
+              <p>A systematic review of 100 peer-reviewed machine learning flood prediction studies published between 1990 and 2024, compared against 2,395 flood events in the EM-DAT disaster database. Pluvial floods are now the most common target (44% of studies), ahead of fluvial (40%), compound (9%), and coastal (7%) flooding.</p>
+              <h4>What the review found</h4>
+              <ul class="findings">
+                <li>Research tracks flood exposure reasonably well in Asia (<strong>50%</strong> of studies; 1,450 flood events), Europe (22%; 336 events), and North America (17%; 207 events).</li>
+                <li>Africa (97 events) and South America (244 events) each account for only <strong>5%</strong> of studies.</li>
+                <li>Indonesia recorded <strong>228</strong> flood events yet appeared in only one study.</li>
+                <li>The review introduces <strong>FLOOD-ML</strong>, a framework for choosing a model by flood type, data structure, and goal.</li>
+              </ul>
+            </div>
+
+            <aside class="study-meta" aria-label="Paper details">
+              <dl>
+                <div>
+                  <dt>Journal</dt>
+                  <dd><em>Journal of Hydrology</em>, 678, 136016</dd>
+                </div>
+                <div>
+                  <dt>Authors</dt>
+                  <dd><strong>Atta Amponsah, C.</strong>, Dixon, B., Qiang, Y., &amp; Yan, E. Y.</dd>
+                </div>
+                <div>
+                  <dt>Methods</dt>
+                  <dd>
+                    <ul class="tags">
+                      <li>Systematic review</li>
+                      <li>Meta-analysis</li>
+                      <li>Bivariate mapping</li>
+                      <li>EM-DAT</li>
+                      <li>Web of Science</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+              <a class="button" href="https://doi.org/10.1016/j.jhydrol.2026.136016">Read the paper</a>
+            </aside>
+          </div>
+
+          <!-- One large figure, three smaller ones. Each opens full size. -->
+          <div class="gallery">
+            <figure class="gallery-lead">
+              <a class="zoom" href="images/review-flood-vs-studies.jpg">
                 <img src="images/review-flood-vs-studies.jpg" width="1400" height="897" loading="lazy"
                      alt="World bivariate choropleth map comparing national flood occurrence with the number of machine learning flood studies. Much of Africa and South America is shaded for high flood occurrence and few studies.">
               </a>
               <figcaption>Flood occurrence against machine learning flood studies per country. Circles show study areas in the 100 reviewed papers.</figcaption>
             </figure>
             <figure>
-              <a href="images/review-flood-type-maps.jpg" target="_blank" rel="noopener">
+              <a class="zoom" href="images/review-flood-type-maps.jpg">
                 <img src="images/review-flood-type-maps.jpg" width="1400" height="997" loading="lazy"
                      alt="Four world maps showing how often machine learning has been applied to pluvial, fluvial, coastal, and compound flooding in each country. The United States, China, and India are the most frequent study areas.">
               </a>
               <figcaption>Where machine learning has been applied to each flood type, by country.</figcaption>
             </figure>
             <figure>
-              <a href="images/review-publication-trends.jpg" target="_blank" rel="noopener">
+              <a class="zoom" href="images/review-publication-trends.jpg">
                 <img src="images/review-publication-trends.jpg" width="1400" height="1115" loading="lazy"
                      alt="Four line charts of yearly publications from 1990 to 2024 for coastal, compound, fluvial, and pluvial flooding. Machine learning publications, shown as dashed lines, rise steeply after about 2018.">
               </a>
-              <figcaption>Yearly flood publications (solid) and machine learning flood publications (dashed) by flood type, 1990 to 2024.</figcaption>
+              <figcaption>Yearly flood publications (solid) and machine learning flood publications (dashed) by flood type.</figcaption>
             </figure>
             <figure>
-              <a href="images/review-ml-sankey.jpg" target="_blank" rel="noopener">
+              <a class="zoom" href="images/review-ml-sankey.jpg">
                 <img src="images/review-ml-sankey.jpg" width="1399" height="1400" loading="lazy"
                      alt="Sankey diagram linking machine learning technique (supervised, unsupervised, semi-supervised) to algorithm and to flood type. Artificial neural networks (67), SVM (19), and random forest (18) are the most used algorithms.">
               </a>
@@ -143,352 +254,417 @@
             </figure>
           </div>
           <p class="figure-credit">Figures 10, 11, 8, and 4 from Atta Amponsah, C., Dixon, B., Qiang, Y., &amp; Yan, E. Y. (2026), <em>Journal of Hydrology</em>, 678, 136016. &copy; 2026 Elsevier B.V. Select a figure to enlarge it.</p>
-
-          <p>Research tracks flood exposure reasonably well in Asia (50% of studies; 1,450 flood events), Europe (22%; 336 events), and North America (17%; 207 events), but Africa (5%; 97 events) and South America (5%; 244 events) are underrepresented. Indonesia recorded 228 flood events yet appeared in only one study. The review also introduces FLOOD-ML, a framework for choosing a model by flood type, data structure, and goal.</p>
-          <ul class="skills" aria-label="Methods">
-            <li>Systematic review</li>
-            <li>Meta-analysis</li>
-            <li>Bivariate mapping</li>
-            <li>EM-DAT</li>
-            <li>Web of Science</li>
-          </ul>
-          <p><a href="https://doi.org/10.1016/j.jhydrol.2026.136016">Read the paper in the Journal of Hydrology</a></p>
         </article>
 
-        <!-- ===== Published: Geo-spatial Information Science, land cover ===== -->
-        <article class="feature feature-published">
-          <p class="feature-label">Published in Geo-spatial Information Science, 2026</p>
-          <h3 class="feature-question">Which machine learning classifier maps land cover best, and does the season matter?</h3>
-          <p>Using Sentinel-2 imagery and spectral indices in Google Earth Engine, I compared six classifiers (k-nearest neighbor, random forest, support vector machine, gradient tree boost, CART, and naive Bayes) across the four seasons of 2024 in Butler County, Ohio.</p>
+        <!-- ----- Published study 2: Geo-spatial Information Science ----- -->
+        <article class="study">
+          <header class="study-head">
+            <p class="status status-published">Published in Geo-spatial Information Science, 2026</p>
+            <h3 class="study-title">Which machine learning classifier maps land cover best, and does the season matter?</h3>
+          </header>
 
-          <div class="figure-grid">
-            <figure>
-              <a href="images/landcover-study-area.jpg" target="_blank" rel="noopener">
-                <img src="images/landcover-study-area.jpg" width="1400" height="819" loading="lazy"
-                     alt="Map of Butler County, Ohio, shaded by tree canopy cover, with inset maps locating the county in southwest Ohio and in the United States.">
-              </a>
-              <figcaption>Study area: Butler County, Ohio, shown with NLCD tree canopy cover.</figcaption>
-            </figure>
-            <figure>
-              <a href="images/landcover-workflow.jpg" target="_blank" rel="noopener">
-                <img src="images/landcover-workflow.jpg" width="1238" height="1400" loading="lazy"
-                     alt="Workflow diagram: Sentinel-2 imagery is preprocessed in Google Earth Engine, spectral indices EVI, BSI, NDBI, and MNDWI are computed, training samples are drawn, six classifiers are run, and their accuracies are compared.">
-              </a>
-              <figcaption>Workflow: Sentinel-2 imagery and four spectral indices (EVI, BSI, NDBI, MNDWI) feed six classifiers, followed by accuracy assessment.</figcaption>
-            </figure>
-            <figure>
-              <a href="images/landcover-maps.jpg" target="_blank" rel="noopener">
+          <div class="study-body">
+            <div class="study-text">
+              <p>Using Sentinel-2 imagery and spectral indices in Google Earth Engine, I compared six classifiers (k-nearest neighbor, random forest, support vector machine, gradient tree boost, CART, and naive Bayes) across the four seasons of 2024 in Butler County, Ohio.</p>
+              <h4>What the study found</h4>
+              <ul class="findings">
+                <li>k-nearest neighbor was the most accurate on average, at <strong>95.8%</strong> overall accuracy.</li>
+                <li>Random forest came a close second at <strong>95.5%</strong>; naive Bayes trailed at <strong>78.9%</strong>.</li>
+                <li>Spring imagery gave the best results across all six classifiers, so when the imagery is captured matters almost as much as which algorithm is used.</li>
+              </ul>
+            </div>
+
+            <aside class="study-meta" aria-label="Paper details">
+              <dl>
+                <div>
+                  <dt>Journal</dt>
+                  <dd><em>Geo-spatial Information Science</em> (open access)</dd>
+                </div>
+                <div>
+                  <dt>Authors</dt>
+                  <dd><strong>Atta Amponsah, C.</strong>, Obosu, P., Boateng, C., Aborah, A. O., Waliba, T., &amp; Obeng, K.</dd>
+                </div>
+                <div>
+                  <dt>Methods</dt>
+                  <dd>
+                    <ul class="tags">
+                      <li>Google Earth Engine</li>
+                      <li>Sentinel-2</li>
+                      <li>Random forest</li>
+                      <li>Support vector machine</li>
+                      <li>k-nearest neighbor</li>
+                      <li>Gradient tree boost</li>
+                      <li>Spectral indices</li>
+                      <li>Accuracy assessment</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+              <a class="button" href="https://doi.org/10.1080/10095020.2026.2667719">Read the paper</a>
+            </aside>
+          </div>
+
+          <div class="gallery">
+            <figure class="gallery-lead">
+              <a class="zoom" href="images/landcover-maps.jpg">
                 <img src="images/landcover-maps.jpg" width="1400" height="877" loading="lazy"
                      alt="Six spring 2024 land cover maps of Butler County, one per classifier, showing water, built-up areas, open areas, farmland, and forest. The naive Bayes map shows far less built-up area than the others.">
               </a>
               <figcaption>Spring 2024 land cover from all six classifiers.</figcaption>
             </figure>
             <figure>
-              <a href="images/landcover-confusion-nb.jpg" target="_blank" rel="noopener">
+              <a class="zoom" href="images/landcover-study-area.jpg">
+                <img src="images/landcover-study-area.jpg" width="1400" height="819" loading="lazy"
+                     alt="Map of Butler County, Ohio, shaded by tree canopy cover, with inset maps locating the county in southwest Ohio and in the United States.">
+              </a>
+              <figcaption>Study area: Butler County, Ohio, shown with NLCD tree canopy cover.</figcaption>
+            </figure>
+            <figure>
+              <a class="zoom" href="images/landcover-workflow.jpg">
+                <img src="images/landcover-workflow.jpg" width="1238" height="1400" loading="lazy"
+                     alt="Workflow diagram: Sentinel-2 imagery is preprocessed in Google Earth Engine, spectral indices EVI, BSI, NDBI, and MNDWI are computed, training samples are drawn, six classifiers are run, and their accuracies are compared.">
+              </a>
+              <figcaption>Workflow: Sentinel-2 imagery and four spectral indices (EVI, BSI, NDBI, MNDWI) feed six classifiers.</figcaption>
+            </figure>
+            <figure>
+              <a class="zoom" href="images/landcover-confusion-nb.jpg">
                 <img src="images/landcover-confusion-nb.jpg" width="1400" height="1249" loading="lazy"
                      alt="Four confusion matrices for the naive Bayes classifier, one per season. In every season many built-up samples are predicted as open area.">
               </a>
               <figcaption>Naive Bayes confusion matrices by season: built-up land was often mislabeled as open area.</figcaption>
             </figure>
           </div>
-          <p class="figure-credit">Figures 1, 2, 7, and 5 from Atta Amponsah et al. (2026), <em>Geo-spatial Information Science</em>, licensed under CC BY 4.0. Select a figure to enlarge it.</p>
-
-          <p>k-NN was the most accurate on average (95.8% overall accuracy), closely followed by random forest (95.5%), while naive Bayes trailed at 78.9%. Spring imagery gave the best results across all classifiers, so when the imagery is captured matters almost as much as which algorithm is used.</p>
-          <ul class="skills" aria-label="Methods and tools">
-            <li>Google Earth Engine</li>
-            <li>Sentinel-2</li>
-            <li>Random forest</li>
-            <li>Support vector machine</li>
-            <li>k-nearest neighbor</li>
-            <li>Gradient tree boost</li>
-            <li>Spectral indices</li>
-            <li>Accuracy assessment</li>
-          </ul>
-          <p><a href="https://doi.org/10.1080/10095020.2026.2667719">Read the open-access paper in Geo-spatial Information Science</a></p>
+          <p class="figure-credit">Figures 7, 1, 2, and 5 from Atta Amponsah et al. (2026), <em>Geo-spatial Information Science</em>, licensed under CC BY 4.0. Select a figure to enlarge it.</p>
         </article>
 
-        <!-- ===== Under review: hurricane flood model transferability ===== -->
-        <article class="feature feature-review">
-          <p class="feature-label">Under review</p>
-          <h3 class="feature-question">Does a flood model trained on one hurricane work on the next one?</h3>
-          <p>Machine learning flood maps often look excellent on the storm they were trained on. This study asks whether that skill carries over to a different hurricane. I built and compared a convolutional neural network, random forest, XGBoost, and two AutoML frameworks for coastal Florida, using a GIS workflow that draws training labels from HEC-RAS hydraulic simulations and field-surveyed high-water marks.</p>
-          <p class="review-note">This paper is in peer review, so results aren't shared here yet. They'll be posted once it's published.</p>
-          <ul class="skills" aria-label="Methods and tools">
-            <li>Convolutional neural networks</li>
-            <li>Random forest</li>
-            <li>XGBoost</li>
-            <li>AutoML (FLAML, AutoKeras)</li>
-            <li>HEC-RAS</li>
-            <li>Cross-event validation</li>
-          </ul>
-        </article>
+        <!-- ----- Studies in peer review (no results or figures) ----- -->
+        <h3 class="subhead">In peer review</h3>
+        <div class="review-grid">
+          <article class="review-card">
+            <p class="status status-review">Under review</p>
+            <h4>Does a flood model trained on one hurricane work on the next one?</h4>
+            <p>Machine learning flood maps often look excellent on the storm they were trained on. This study asks whether that skill carries over to a different hurricane. I built and compared a convolutional neural network, random forest, XGBoost, and two AutoML frameworks for coastal Florida, using a GIS workflow that draws training labels from HEC-RAS hydraulic simulations and field-surveyed high-water marks.</p>
+            <ul class="tags" aria-label="Methods and tools">
+              <li>Convolutional neural networks</li>
+              <li>Random forest</li>
+              <li>XGBoost</li>
+              <li>AutoML (FLAML, AutoKeras)</li>
+              <li>HEC-RAS</li>
+              <li>Cross-event validation</li>
+            </ul>
+            <p class="review-note">Results will be posted once the paper is published.</p>
+          </article>
 
-        <!-- ===== Under review: flood-risk-weighted shelter optimization ===== -->
-        <article class="feature feature-review">
-          <p class="feature-label">Under review at Computers, Environment and Urban Systems</p>
-          <h3 class="feature-question">Where should emergency shelters go when flood risk is uneven?</h3>
-          <p>Shelter-location models usually treat every resident's need the same. This study weights demand by FEMA flood hazard across a coastal Florida county and tests reinforcement learning against exact optimization solvers for choosing where shelters should go.</p>
-          <p class="review-note">This paper is in peer review, so results aren't shared here yet. They'll be posted once it's published.</p>
-          <ul class="skills" aria-label="Methods and tools">
-            <li>Reinforcement learning (Q-learning)</li>
-            <li>p-median optimization</li>
-            <li>CPLEX</li>
-            <li>PuLP</li>
-            <li>Python</li>
-            <li>FEMA flood hazard data</li>
-          </ul>
-        </article>
-
-        <!-- Publications -->
-        <h3 class="list-heading">Publications</h3>
-        <ul class="pub-list">
-          <li>
-            <a class="pub-title" href="https://doi.org/10.1016/j.jhydrol.2026.136016">The application of geospatially-integrated machine learning models for flood prediction: A review</a>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Dixon, B., Qiang, Y., &amp; Yan, E. (2026). <em>Journal of Hydrology</em>, 678, 136016.</p>
-          </li>
-          <li>
-            <a class="pub-title" href="https://doi.org/10.1080/10095020.2026.2667719">Performance comparison of machine learning algorithms for land cover classification</a>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Obosu, P., Boateng, C., Aborah, A. O., Waliba, T., &amp; Obeng, K. (2026). <em>Geo-spatial Information Science</em>.</p>
-          </li>
-          <li>
-            <span class="pub-title">Cross-event generalizability of machine learning and AutoML models for hurricane-induced flood susceptibility: Evaluation against HEC-RAS simulations</span>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Dixon, B., Qiang, Y., Sahagún-Covarrubias, S., &amp; Yan, E. <span class="status status-review">Under review</span></p>
-          </li>
-          <li>
-            <span class="pub-title">Flood-risk-weighted emergency shelter optimization using reinforcement learning and exact p-median solvers</span>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Khan, T. I., Mumu, C. M. M., &amp; Downs, J. <em>Computers, Environment and Urban Systems</em>. <span class="status status-review">Under review</span></p>
-          </li>
-          <li>
-            <a class="pub-title" href="https://www.proquest.com/docview/3358049991">The application of GIS-integrated ML models for flood prediction: A global meta-analysis and a comparative study of ML, AutoML, and HEC-RAS flood models</a>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong> (2026). Master's thesis, University of South Florida.</p>
-          </li>
-          <li>
-            <a class="pub-title" href="https://ggs.org.gh/papers/Papers/mitigating%20latent%20land%20conflicts%20in%20Ghana_the%20role%20of%20uniform%20coordinate%20systems_conference_2024.pdf">Mitigating latent land conflicts in Ghana: The role of uniform coordinate systems</a>
-            <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Asiedu, A. A., Achampong, K. Y., Ayer, J., Asante, C. Y., &amp; Ziggah, Y. Y. (2024). <em>Ghana Geospatial Society 2nd Annual Geospatial Meeting &amp; Conference Proceedings</em>.</p>
-          </li>
-        </ul>
-
-        <!-- Presentations -->
-        <h3 class="list-heading">Presentations</h3>
-        <ul class="entry-list">
-          <li>
-            <span class="entry-date">Jun 2026</span>
-            <div>
-              <p class="entry-title">Conference takeaways, closing session</p>
-              <p class="entry-meta">Co-presenter, SWAN 2026 Annual Conference, Tampa, FL. <a href="https://swan-forum.com/publications/the-tools-are-ready-are-we/">Read the co-authored summary</a></p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">Mar 2026</span>
-            <div>
-              <p class="entry-title">HEC-RAS and a diverse AutoML-optimized suite of machine learning approaches for hurricane-induced flood prediction</p>
-              <p class="entry-meta">Oral paper, American Association of Geographers Annual Meeting, San Francisco, CA</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">Mar 2026</span>
-            <div>
-              <p class="entry-title">Urban flood and damage prediction with real-time rainfall and camera-derived flood depth using a CNN</p>
-              <p class="entry-meta">Oral paper (co-author), American Association of Geographers Annual Meeting, San Francisco, CA</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">Feb 2026</span>
-            <div>
-              <p class="entry-title">Comparison of CNN, RF, and XGBoost for flood prediction: Insights from Hurricanes Helene and Milton</p>
-              <p class="entry-meta">Oral paper, Florida Society of Geographers Annual Meeting, Gainesville, FL. Outstanding Oral Presenter award.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">May 2025</span>
-            <div>
-              <p class="entry-title">GIS-integrated machine learning in flood prediction: A meta-analysis and comparative modeling of CNN and HEC-RAS</p>
-              <p class="entry-meta">Poster, ASPRS Spring Geospatial Workshop, Gainesville, FL</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">Feb 2025</span>
-            <div>
-              <p class="entry-title">Machine learning applications integrated with GIS for flood prediction</p>
-              <p class="entry-meta">Poster, Florida Society of Geographers Annual Meeting, Gainesville, FL. Outstanding Poster Presenter award.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ================= PROJECTS ================= -->
-    <section id="projects" class="section">
-      <div class="wrap">
-        <h2>Projects</h2>
-        <div class="empty-note">
-          <p>Simulations and project write-ups are on the way. In the meantime, my code is on GitHub.</p>
-          <a class="button button-quiet" href="https://github.com/MyCodeChris">View my GitHub</a>
+          <article class="review-card">
+            <p class="status status-review">Under review at Computers, Environment and Urban Systems</p>
+            <h4>Where should emergency shelters go when flood risk is uneven?</h4>
+            <p>Shelter-location models usually treat every resident's need the same. This study weights demand by FEMA flood hazard across a coastal Florida county and tests reinforcement learning against exact optimization solvers for choosing where shelters should go.</p>
+            <ul class="tags" aria-label="Methods and tools">
+              <li>Reinforcement learning (Q-learning)</li>
+              <li>p-median optimization</li>
+              <li>CPLEX</li>
+              <li>PuLP</li>
+              <li>Python</li>
+              <li>FEMA flood hazard data</li>
+            </ul>
+            <p class="review-note">Results will be posted once the paper is published.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= EDUCATION ================= -->
-    <section id="education" class="section">
+    <!-- =====================================================
+         PUBLICATIONS AND PRESENTATIONS
+         ===================================================== -->
+    <section id="publications" class="section">
       <div class="wrap">
-        <h2>Education</h2>
-        <ul class="entry-list">
-          <li>
-            <span class="entry-date">2026 to present</span>
-            <div>
-              <p class="entry-title">PhD, Geography, Environmental Science &amp; Policy</p>
-              <p class="entry-meta">University of South Florida, Tampa, FL</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2025 to present</span>
-            <div>
-              <p class="entry-title">Graduate Certificate, Artificial Intelligence</p>
-              <p class="entry-meta">University of South Florida, Tampa, FL</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2024 to 2026</span>
-            <div>
-              <p class="entry-title">MA, Geography: GIS and Spatial Analysis</p>
-              <p class="entry-meta">University of South Florida, Tampa, FL</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2024 to 2026</span>
-            <div>
-              <p class="entry-title">Graduate Certificate, Geographic Information Science</p>
-              <p class="entry-meta">University of South Florida, Tampa, FL</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2018 to 2022</span>
-            <div>
-              <p class="entry-title">BSc, Geomatic Engineering</p>
-              <p class="entry-meta">Kwame Nkrumah University of Science and Technology, Kumasi, Ghana</p>
-            </div>
-          </li>
-        </ul>
+        <header class="section-head">
+          <h2>Publications &amp; presentations</h2>
+        </header>
+
+        <div class="pub-columns">
+          <div>
+            <h3 class="list-heading">Journal articles</h3>
+            <ol class="pub-list">
+              <li>
+                <span class="pub-year">2026</span>
+                <div>
+                  <a class="pub-title" href="https://doi.org/10.1016/j.jhydrol.2026.136016">The application of geospatially-integrated machine learning models for flood prediction: A review</a>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Dixon, B., Qiang, Y., &amp; Yan, E. <em>Journal of Hydrology</em>, 678, 136016.</p>
+                </div>
+              </li>
+              <li>
+                <span class="pub-year">2026</span>
+                <div>
+                  <a class="pub-title" href="https://doi.org/10.1080/10095020.2026.2667719">Performance comparison of machine learning algorithms for land cover classification</a>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Obosu, P., Boateng, C., Aborah, A. O., Waliba, T., &amp; Obeng, K. <em>Geo-spatial Information Science</em>.</p>
+                </div>
+              </li>
+            </ol>
+
+            <h3 class="list-heading">Under review</h3>
+            <ol class="pub-list">
+              <li>
+                <span class="pub-year"><span class="status status-review">Review</span></span>
+                <div>
+                  <span class="pub-title">Cross-event generalizability of machine learning and AutoML models for hurricane-induced flood susceptibility: Evaluation against HEC-RAS simulations</span>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Dixon, B., Qiang, Y., Sahagún-Covarrubias, S., &amp; Yan, E.</p>
+                </div>
+              </li>
+              <li>
+                <span class="pub-year"><span class="status status-review">Review</span></span>
+                <div>
+                  <span class="pub-title">Flood-risk-weighted emergency shelter optimization using reinforcement learning and exact p-median solvers</span>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Khan, T. I., Mumu, C. M. M., &amp; Downs, J. <em>Computers, Environment and Urban Systems</em>.</p>
+                </div>
+              </li>
+            </ol>
+
+            <h3 class="list-heading">Thesis and proceedings</h3>
+            <ol class="pub-list">
+              <li>
+                <span class="pub-year">2026</span>
+                <div>
+                  <a class="pub-title" href="https://www.proquest.com/docview/3358049991">The application of GIS-integrated ML models for flood prediction: A global meta-analysis and a comparative study of ML, AutoML, and HEC-RAS flood models</a>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong> Master's thesis, University of South Florida.</p>
+                </div>
+              </li>
+              <li>
+                <span class="pub-year">2024</span>
+                <div>
+                  <a class="pub-title" href="https://ggs.org.gh/papers/Papers/mitigating%20latent%20land%20conflicts%20in%20Ghana_the%20role%20of%20uniform%20coordinate%20systems_conference_2024.pdf">Mitigating latent land conflicts in Ghana: The role of uniform coordinate systems</a>
+                  <p class="pub-meta"><strong>Atta Amponsah, C.</strong>, Asiedu, A. A., Achampong, K. Y., Ayer, J., Asante, C. Y., &amp; Ziggah, Y. Y. <em>Ghana Geospatial Society 2nd Annual Geospatial Meeting &amp; Conference Proceedings</em>.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="list-heading">Presentations</h3>
+            <ol class="talk-list">
+              <li>
+                <span class="talk-date">Jun 2026</span>
+                <p class="talk-title">Conference takeaways, closing session</p>
+                <p class="talk-meta">Co-presenter, SWAN 2026 Annual Conference, Tampa, FL. <a href="https://swan-forum.com/publications/the-tools-are-ready-are-we/">Read the co-authored summary</a></p>
+              </li>
+              <li>
+                <span class="talk-date">Mar 2026</span>
+                <p class="talk-title">HEC-RAS and a diverse AutoML-optimized suite of machine learning approaches for hurricane-induced flood prediction</p>
+                <p class="talk-meta">Oral paper, American Association of Geographers Annual Meeting, San Francisco, CA</p>
+              </li>
+              <li>
+                <span class="talk-date">Mar 2026</span>
+                <p class="talk-title">Urban flood and damage prediction with real-time rainfall and camera-derived flood depth using a CNN</p>
+                <p class="talk-meta">Oral paper (co-author), American Association of Geographers Annual Meeting, San Francisco, CA</p>
+              </li>
+              <li>
+                <span class="talk-date">Feb 2026</span>
+                <p class="talk-title">Comparison of CNN, RF, and XGBoost for flood prediction: Insights from Hurricanes Helene and Milton</p>
+                <p class="talk-meta">Oral paper, Florida Society of Geographers Annual Meeting, Gainesville, FL. <span class="award-note">Outstanding Oral Presenter award</span></p>
+              </li>
+              <li>
+                <span class="talk-date">May 2025</span>
+                <p class="talk-title">GIS-integrated machine learning in flood prediction: A meta-analysis and comparative modeling of CNN and HEC-RAS</p>
+                <p class="talk-meta">Poster, ASPRS Spring Geospatial Workshop, Gainesville, FL</p>
+              </li>
+              <li>
+                <span class="talk-date">Feb 2025</span>
+                <p class="talk-title">Machine learning applications integrated with GIS for flood prediction</p>
+                <p class="talk-meta">Poster, Florida Society of Geographers Annual Meeting, Gainesville, FL. <span class="award-note">Outstanding Poster Presenter award</span></p>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ================= EXPERIENCE ================= -->
+    <!-- =====================================================
+         PROJECTS (placeholder until you add simulations)
+         ===================================================== -->
+    <section id="projects" class="section section-wash">
+      <div class="wrap">
+        <div class="projects-empty">
+          <div>
+            <h2>Projects</h2>
+            <p>Simulations, maps, and code projects are on the way. In the meantime, you can browse my code on GitHub.</p>
+          </div>
+          <a class="button" href="https://github.com/MyCodeChris">View my GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         EXPERIENCE, EDUCATION, AWARDS
+         Filled dots on the timeline mark current roles.
+         ===================================================== -->
     <section id="experience" class="section">
       <div class="wrap">
-        <h2>Experience</h2>
-        <ul class="entry-list">
-          <li>
-            <span class="entry-date">2026 to present</span>
-            <div>
-              <p class="entry-title">Instructor of Record, GEO 3164C: Research Methods in Geography, USF</p>
-              <p class="entry-meta">Sole instructor for an undergraduate course on quantitative research methods and statistical computing in R, covering lectures, labs, coding assignments, and assessment.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2025 to present</span>
-            <div>
-              <p class="entry-title">Research Assistant, Geospatial Analytics Lab, USF</p>
-              <p class="entry-meta">Flood modeling with CNNs, ensemble models, AutoML, and HEC-RAS; integrating drainage networks and rainfall time series into model workflows.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2024 to present</span>
-            <div>
-              <p class="entry-title">Graduate Teaching Assistant, USF</p>
-              <p class="entry-meta">Supporting GIS courses through lab activities, assignment feedback, and grading.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2025</span>
-            <div>
-              <p class="entry-title">Summer Intern, Argonne National Laboratory, U.S. Department of Energy</p>
-              <p class="entry-meta">Remote internship.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2022 to 2024</span>
-            <div>
-              <p class="entry-title">Teaching Assistant, Department of Geomatic Engineering, KNUST</p>
-              <p class="entry-meta">Led GIS and remote sensing labs and field practicals in GPS surveying, photogrammetry, and engineering surveying; supported UAV research; carried out cadastral surveys with survey-grade GNSS.</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2021</span>
-            <div>
-              <p class="entry-title">Assistant Surveyor, Natwam Surveying and Building Designs</p>
-              <p class="entry-meta">Coordinated field survey teams on cadastral and setting-out surveys; integrated GPS data with existing plans in ArcGIS.</p>
-            </div>
-          </li>
-        </ul>
+        <header class="section-head">
+          <h2>Experience, education &amp; awards</h2>
+        </header>
+
+        <div class="cv-grid">
+          <div>
+            <h3 class="list-heading">Experience</h3>
+            <ol class="timeline">
+              <li class="is-current">
+                <span class="tl-date">2026–present</span>
+                <p class="tl-title">Instructor of Record, GEO 3164C: Research Methods in Geography</p>
+                <p class="tl-org">University of South Florida</p>
+                <p class="tl-desc">Sole instructor for an undergraduate course on quantitative research methods and statistical computing in R, covering lectures, labs, coding assignments, and assessment.</p>
+              </li>
+              <li class="is-current">
+                <span class="tl-date">2025–present</span>
+                <p class="tl-title">Research Assistant, Geospatial Analytics Lab</p>
+                <p class="tl-org">University of South Florida</p>
+                <p class="tl-desc">Flood modeling with CNNs, ensemble models, AutoML, and HEC-RAS; integrating drainage networks and rainfall time series into model workflows.</p>
+              </li>
+              <li class="is-current">
+                <span class="tl-date">2024–present</span>
+                <p class="tl-title">Graduate Teaching Assistant</p>
+                <p class="tl-org">University of South Florida</p>
+                <p class="tl-desc">Supporting GIS courses through lab activities, assignment feedback, and grading.</p>
+              </li>
+              <li>
+                <span class="tl-date">2025</span>
+                <p class="tl-title">Summer Intern</p>
+                <p class="tl-org">Argonne National Laboratory, U.S. Department of Energy</p>
+                <p class="tl-desc">Remote internship.</p>
+              </li>
+              <li>
+                <span class="tl-date">2022–2024</span>
+                <p class="tl-title">Teaching Assistant, Department of Geomatic Engineering</p>
+                <p class="tl-org">Kwame Nkrumah University of Science and Technology</p>
+                <p class="tl-desc">Led GIS and remote sensing labs and field practicals in GPS surveying, photogrammetry, and engineering surveying; supported UAV research; carried out cadastral surveys with survey-grade GNSS.</p>
+              </li>
+              <li>
+                <span class="tl-date">2021</span>
+                <p class="tl-title">Assistant Surveyor</p>
+                <p class="tl-org">Natwam Surveying and Building Designs</p>
+                <p class="tl-desc">Coordinated field survey teams on cadastral and setting-out surveys; integrated GPS data with existing plans in ArcGIS.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="list-heading">Education</h3>
+            <ol class="timeline timeline-compact">
+              <li class="is-current">
+                <span class="tl-date">2026–present</span>
+                <p class="tl-title">PhD, Geography, Environmental Science &amp; Policy</p>
+                <p class="tl-org">University of South Florida</p>
+              </li>
+              <li class="is-current">
+                <span class="tl-date">2025–present</span>
+                <p class="tl-title">Graduate Certificate, Artificial Intelligence</p>
+                <p class="tl-org">University of South Florida</p>
+              </li>
+              <li>
+                <span class="tl-date">2024–2026</span>
+                <p class="tl-title">MA, Geography: GIS and Spatial Analysis</p>
+                <p class="tl-org">University of South Florida</p>
+              </li>
+              <li>
+                <span class="tl-date">2024–2026</span>
+                <p class="tl-title">Graduate Certificate, Geographic Information Science</p>
+                <p class="tl-org">University of South Florida</p>
+              </li>
+              <li>
+                <span class="tl-date">2018–2022</span>
+                <p class="tl-title">BSc, Geomatic Engineering</p>
+                <p class="tl-org">Kwame Nkrumah University of Science and Technology, Ghana</p>
+              </li>
+            </ol>
+
+            <h3 class="list-heading">Awards &amp; certifications</h3>
+            <ul class="award-list">
+              <li>
+                <span class="award-year">2026</span>
+                <div>
+                  <p class="award-title">GIS Professional (GISP)</p>
+                  <p class="award-org">GIS Certification Institute. <a href="https://credentials.gisci.org/issuers/01jrwr3npv69p71h3yvm85249v/recipients/01kgqxpr0c8eph457tvx138rd3">Verify my credential</a></p>
+                </div>
+              </li>
+              <li>
+                <span class="award-year">2026</span>
+                <div>
+                  <p class="award-title">Outstanding Oral Presenter, Master's category</p>
+                  <p class="award-org">Florida Society of Geographers</p>
+                </div>
+              </li>
+              <li>
+                <span class="award-year">2025</span>
+                <div>
+                  <p class="award-title">Outstanding Poster Presenter, Master's category</p>
+                  <p class="award-org">Florida Society of Geographers</p>
+                </div>
+              </li>
+              <li>
+                <span class="award-year">2024</span>
+                <div>
+                  <p class="award-title">Professional Geospatialist (PG)</p>
+                  <p class="award-org">Ghana Geospatial Society</p>
+                </div>
+              </li>
+              <li>
+                <span class="award-year">2020–22</span>
+                <div>
+                  <p class="award-title">Excellent Student Award, three consecutive years</p>
+                  <p class="award-org">College of Engineering, KNUST</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ================= AWARDS ================= -->
-    <section id="awards" class="section">
-      <div class="wrap">
-        <h2>Awards &amp; certifications</h2>
-        <ul class="entry-list">
-          <li>
-            <span class="entry-date">2026</span>
-            <div>
-              <p class="entry-title">GIS Professional (GISP)</p>
-              <p class="entry-meta">GIS Certification Institute. <a href="https://credentials.gisci.org/issuers/01jrwr3npv69p71h3yvm85249v/recipients/01kgqxpr0c8eph457tvx138rd3">Verify my credential</a></p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2026</span>
-            <div>
-              <p class="entry-title">Outstanding Oral Presenter, Master's category</p>
-              <p class="entry-meta">Florida Society of Geographers</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2025</span>
-            <div>
-              <p class="entry-title">Outstanding Poster Presenter, Master's category</p>
-              <p class="entry-meta">Florida Society of Geographers</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2024</span>
-            <div>
-              <p class="entry-title">Professional Geospatialist (PG)</p>
-              <p class="entry-meta">Ghana Geospatial Society</p>
-            </div>
-          </li>
-          <li>
-            <span class="entry-date">2020 to 2022</span>
-            <div>
-              <p class="entry-title">Excellent Student Award, three consecutive years</p>
-              <p class="entry-meta">College of Engineering, KNUST</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
     <section id="contact" class="section section-deep">
-      <div class="wrap">
-        <h2>Contact</h2>
-        <p class="contact-intro">I'm happy to talk about flood modeling, GIS, or research collaborations.</p>
-        <ul class="contact-list">
-          <li><a href="mailto:attaamponsahc@usf.edu">attaamponsahc@usf.edu</a></li>
+      <div class="wrap contact-grid">
+        <div>
+          <h2>Contact</h2>
+          <p class="contact-lead">I'm happy to talk about flood modeling, GIS, or research collaborations.</p>
+          <a class="contact-email" href="mailto:attaamponsahc@usf.edu">attaamponsahc@usf.edu</a>
+        </div>
+        <ul class="contact-links">
+          <!-- Replace this address with your current LinkedIn profile URL -->
           <li><a href="https://www.linkedin.com/in/christopher-atta-amponsah-pgs-ggs-13408519">LinkedIn</a></li>
           <li><a href="https://github.com/MyCodeChris">GitHub</a></li>
-          <li><a href="https://orcid.org/0009-0009-2702-3150">ORCID</a></li> 
+          <li><a href="https://orcid.org/0009-0009-2702-3150">ORCID</a></li>
+          <li><a href="https://credentials.gisci.org/issuers/01jrwr3npv69p71h3yvm85249v/recipients/01kgqxpr0c8eph457tvx138rd3">GISP credential</a></li>
         </ul>
       </div>
     </section>
 
   </main>
 
-  <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
-    <div class="wrap">
-      <p>&copy; 2026 Christopher Atta Amponsah. Hosted on GitHub Pages.</p>
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Christopher Atta Amponsah</p>
+      <p>Hosted on GitHub Pages. <a href="#top">Back to top</a></p>
     </div>
   </footer>
+
+  <!-- =====================================================
+       FIGURE VIEWER (opened by script.js)
+       ===================================================== -->
+  <dialog class="lightbox" id="lightbox" aria-label="Figure viewer">
+    <div class="lightbox-bar">
+      <span class="lightbox-count" id="lightbox-count"></span>
+      <button class="lightbox-close" type="button" data-close>Close</button>
+    </div>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <div class="lightbox-nav">
+      <button type="button" data-step="-1">Previous</button>
+      <button type="button" data-step="1">Next</button>
+    </div>
+  </dialog>
 
 </body>
 </html>

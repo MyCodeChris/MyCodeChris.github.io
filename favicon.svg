@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#382d51"/>
+  <clipPath id="tile"><rect width="64" height="64" rx="14"/></clipPath>
+  <g clip-path="url(#tile)">
+    <!-- contour lines of a hill -->
+    <g fill="none" stroke="#caebb2" stroke-width="2.6">
+      <ellipse cx="40" cy="24" rx="8" ry="6"/>
+      <ellipse cx="38" cy="27" rx="17" ry="13"/>
+      <ellipse cx="36" cy="30" rx="27" ry="21"/>
+    </g>
+    <!-- flood water at the foot of the hill -->
+    <rect x="0" y="44" width="64" height="20" fill="#52a8a3"/>
+    <line x1="0" y1="44" x2="64" y2="44" stroke="#92d8a4" stroke-width="2.6"/>
+  </g>
+</svg>
