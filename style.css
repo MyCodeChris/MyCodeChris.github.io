@@ -1,84 +1,708 @@
+/* =========================================================
+   1. DESIGN TOKENS
+   Colors and fonts live here as variables. Change a value
+   once and it updates everywhere it is used.
+
+   The palette comes from cmocean, a set of color maps made
+   for oceanography (Thyng et al., 2016). "deep" runs from
+   shallow water to the abyss; "topo" adds land colors.
+   ========================================================= */
+:root {
+  /* from cmocean "deep" (shallow to deep) */
+  --shallow: #fdfecc;      /* pale shoreline: headings on dark backgrounds */
+  --mint: #92d8a4;         /* light accents on dark backgrounds            */
+  --mint-pale: #caebb2;    /* body text on dark backgrounds                */
+  --teal: #52a8a3;         /* borders and the flood water                  */
+  --blue: #3e5a92;         /* links and buttons on light backgrounds       */
+  --indigo: #382d51;       /* header, contact, deep water                  */
+  --abyss: #281a2c;        /* footer, the deepest color                    */
+
+  /* from cmocean "topo" (land) */
+  --sand: #b3913f;         /* current-research edge                        */
+  --sand-dark: #7d5f1c;    /* readable sand-colored text                   */
+  --teal-dark: #2d6f6b;    /* readable teal-colored text                   */
+
+  /* light surfaces and text */
+  --paper: #f4f8f6;        /* page background                              */
+  --wash: #e5f3ea;         /* tinted Research section                      */
+  --white: #ffffff;
+  --ink: #2b2542;          /* main text                                    */
+  --muted: #5a5670;        /* secondary text                               */
+  --line: #d6e3dc;         /* thin borders                                 */
+
+  --font-heading: "Source Serif 4", Georgia, serif;
+  --font-body: "Public Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+
+  --width: 56rem;          /* maximum width of the content */
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  line-height: 1.6;
-  color: #1a1a1a;
-  background: #ffffff;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
 }
 
-/* ---------- Header & navigation ---------- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--blue);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+/* A clear outline when someone tabs through with the keyboard */
+a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* On dark backgrounds the outline switches to the pale color */
+.site-header a:focus-visible,
+.hero a:focus-visible,
+.section-deep a:focus-visible {
+  outline-color: var(--shallow);
+}
+
+/* .wrap keeps content centered with a comfortable width */
+.wrap {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  background: var(--shallow);
+  color: var(--abyss);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+}
+
+/* =========================================================
+   3. HEADER AND NAVIGATION
+   ========================================================= */
 .site-header {
   position: sticky;
   top: 0;
-  background: #ffffff;
+  z-index: 10;
+  background: rgba(56, 45, 81, 0.95);   /* --indigo, slightly see-through */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(146, 216, 164, 0.25);
+}
+
+.header-inner {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem 1.5rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #e5e5e5;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
 }
 
 .site-name {
+  font-family: var(--font-heading);
   font-weight: 700;
-  color: #1a1a1a;
+  font-size: 1.1rem;
+  color: var(--shallow);
   text-decoration: none;
+}
+
+.site-name:hover {
+  color: var(--mint);
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.25rem 1.1rem;
 }
 
 nav a {
-  color: #555;
+  color: var(--mint-pale);
   text-decoration: none;
   font-size: 0.95rem;
 }
 
 nav a:hover {
-  color: #0b6e4f;
+  color: var(--shallow);
+  text-decoration: underline;
 }
 
-/* ---------- Sections ---------- */
+/* =========================================================
+   4. HERO
+   A deep-water gradient with contour lines drawn by CSS only.
+   A band of water rises over the lowest lines on page load.
+   ========================================================= */
 .hero {
-  padding: 3rem 0 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0 10rem;
+  color: var(--mint-pale);
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 25%, rgba(82, 168, 163, 0.28), transparent 70%),
+    linear-gradient(170deg, var(--indigo) 0%, var(--blue) 70%, #407598 100%);
 }
 
-h1 {
-  margin-bottom: 0.25rem;
+/* Contour lines */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(
+      ellipse 55% 70% at 88% 28%,
+      transparent 0 26px,
+      rgba(146, 216, 164, 0.22) 26px 27.5px
+    );
+  /* fade the lines out on the left so the text stays easy to read */
+  -webkit-mask-image: linear-gradient(to right, transparent 20%, #000 80%);
+  mask-image: linear-gradient(to right, transparent 20%, #000 80%);
 }
 
-.role {
-  color: #555;
+/* Flood water */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6rem;
+  background: linear-gradient(to top, rgba(82, 168, 163, 0.65), rgba(82, 168, 163, 0.25));
+  border-top: 2px solid var(--mint);
+  animation: water-rise 2.2s ease-out both;
+}
+
+@keyframes water-rise {
+  from { height: 0; }
+  to   { height: 6rem; }
+}
+
+/* Text on the left, photo on the right: a two-column grid.
+   "1fr" takes the leftover space; "auto" is as wide as the photo. */
+.hero-content {
+  position: relative;   /* sits above the contour and water layers */
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-photo {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;          /* turns the square photo into a circle  */
+  object-fit: cover;           /* fills the circle without stretching   */
+  border: 4px solid var(--mint);
+  background: var(--indigo);
+}
+
+.hero h1 {
+  color: var(--shallow);
+  font-size: clamp(2.4rem, 6vw, 3.9rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+  margin-bottom: 1.25rem;
+}
+
+.hero-role {
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-statement {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+  line-height: 1.45;
+  max-width: 34ch;
+  margin-bottom: 2.25rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* =========================================================
+   5. BUTTONS
+   ========================================================= */
+.button {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border: 2px solid var(--blue);
+  border-radius: 4px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: var(--white);
+}
+
+.button-quiet {
+  background: transparent;
+  color: var(--blue);
+}
+
+.button-quiet:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+
+/* Buttons inside the dark hero use the light colors instead */
+.hero .button {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--abyss);
+}
+
+.hero .button:hover {
+  background: var(--shallow);
+  border-color: var(--shallow);
+}
+
+.hero .button-quiet {
+  background: transparent;
+  border-color: var(--mint-pale);
+  color: var(--shallow);
+}
+
+.hero .button-quiet:hover {
+  background: rgba(253, 254, 204, 0.12);
+  color: var(--shallow);
+}
+
+/* =========================================================
+   6. SECTIONS
+   ========================================================= */
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: 4rem;   /* so the sticky header doesn't cover headings */
+}
+
+.section-tinted {
+  background: var(--wash);
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: var(--indigo);
+  margin-bottom: 2rem;
+}
+
+.list-heading {
+  font-size: 1.35rem;
+  color: var(--indigo);
+  margin: 3.5rem 0 1.25rem;
+}
+
+/* About: text on the left, tools on the right */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  max-width: 62ch;
+}
+
+.tools {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--teal);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.tools h3 {
   font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.tools dl {
+  margin: 0;
+}
+
+.tools dt {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.85rem;
+}
+
+.tools dt:first-child {
   margin-top: 0;
 }
 
-section {
-  padding: 1.5rem 0;
-  scroll-margin-top: 5rem;
+.tools dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-h2 {
-  font-size: 1.4rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 2px solid #0b6e4f;
+/* =========================================================
+   7. RESEARCH FEATURES
+   ========================================================= */
+.section-intro {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  max-width: 48ch;
+  margin-bottom: 2.5rem;
 }
 
-/* ---------- Footer ---------- */
-footer {
-  margin-top: 3rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid #e5e5e5;
-  color: #777;
+.feature {
+  background: var(--white);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 6px 6px 0;
+  padding: 2rem 2rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-question {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--indigo);
+  max-width: 32ch;
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  max-width: 66ch;
+}
+
+/* Each card's left edge and label show its status:
+   indigo = current research, teal = published, sand = under review */
+.feature-current {
+  border-left-color: var(--indigo);
+}
+
+.feature-published {
+  border-left-color: var(--teal);
+}
+
+.feature-review {
+  border-left-color: var(--sand);
+}
+
+.feature-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.feature-current .feature-label {
+  color: var(--indigo);
+}
+
+.feature-published .feature-label {
+  color: var(--teal-dark);
+}
+
+.feature-review .feature-label {
+  color: var(--sand-dark);
+}
+
+.review-note {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Skill tags: a wrapping row of small rounded labels */
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills li {
+  background: var(--wash);
+  color: var(--indigo);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;   /* a very large radius makes a pill shape */
+}
+
+/* Figures in a grid with two equal columns.
+   Two images fill one row; four images fill two rows. */
+.figure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.25rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.figure-grid figure {
+  margin: 0;
+}
+
+.figure-grid img {
+  display: block;
+  width: 100%;          /* shrink to fit the column            */
+  height: auto;
+  aspect-ratio: 4 / 3;  /* give every image the same box shape */
+  object-fit: contain;  /* fit the whole image inside that box */
+  padding: 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+}
+
+.figure-grid a:hover img {
+  border-color: var(--teal);
+}
+
+.figure-grid figcaption {
   font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+.figure-credit {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.status {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.status-review {
+  color: var(--sand-dark);
+  background: #f4ead2;
+}
+
+/* Publications */
+.pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-list li {
+  padding: 1.1rem 0;
+  border-top: 1px solid #c3dccd;
+}
+
+.pub-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+span.pub-title {
+  color: var(--ink);
+}
+
+.pub-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* =========================================================
+   8. DATED LISTS (presentations, education, experience, awards)
+   A two-column grid: date on the left, details on the right.
+   ========================================================= */
+.entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-list li {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-tinted .entry-list li {
+  border-top-color: #c3dccd;
+}
+
+.entry-date {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.1rem;
+}
+
+.entry-title {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.entry-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Projects placeholder */
+.empty-note {
+  border: 1px dashed var(--teal);
+  border-radius: 6px;
+  padding: 2rem;
+  background: var(--white);
+}
+
+/* =========================================================
+   9. CONTACT (dark) AND FOOTER (darkest)
+   The page ends in deep water, matching the top.
+   ========================================================= */
+.section-deep {
+  background: var(--indigo);
+  color: var(--mint-pale);
+}
+
+.section-deep h2 {
+  color: var(--shallow);
+}
+
+.section-deep a {
+  color: var(--mint);
+}
+
+.section-deep a:hover {
+  color: var(--shallow);
+}
+
+.contact-intro {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  font-weight: 600;
+}
+
+.site-footer {
+  padding: 2rem 0;
+  background: var(--abyss);
+  color: var(--mint-pale);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* =========================================================
+   10. SMALL SCREENS
+   Rules inside this block only apply when the screen is
+   narrower than 700px (phones and small tablets).
+   ========================================================= */
+@media (max-width: 700px) {
+  .hero {
+    padding: 4rem 0 8rem;
+  }
+
+  .hero::after {
+    height: 4.5rem;
+    animation: none;
+  }
+
+  /* On phones: one column, small photo above the name */
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-photo {
+    order: -1;                 /* move the photo before the text */
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .feature {
+    padding: 1.5rem 1.25rem 1rem;
+  }
+
+  .figure-grid {
+    grid-template-columns: 1fr;   /* stack the figures in one column */
+  }
+
+  .entry-list li {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* Respect people who turn off animations in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero::after {
+    animation: none;
+  }
 }
