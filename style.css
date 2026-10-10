@@ -1,10 +1,56 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   max-width: 720px;
-  margin: 4rem auto;
+  margin: 0 auto;
   padding: 0 1.5rem;
   line-height: 1.6;
   color: #1a1a1a;
+  background: #ffffff;
+}
+
+/* ---------- Header & navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.site-name {
+  font-weight: 700;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+nav a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: #0b6e4f;
+}
+
+/* ---------- Sections ---------- */
+.hero {
+  padding: 3rem 0 1rem;
 }
 
 h1 {
@@ -15,4 +61,24 @@ h1 {
   color: #555;
   font-size: 1.1rem;
   margin-top: 0;
+}
+
+section {
+  padding: 1.5rem 0;
+  scroll-margin-top: 5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #0b6e4f;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e5e5e5;
+  color: #777;
+  font-size: 0.9rem;
 }
